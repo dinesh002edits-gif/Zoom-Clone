@@ -2,10 +2,11 @@
   "name": "yoom",
   "version": "0.1.0",
   "private": true,
-  "scripts": {
+ "scripts": {
   "dev": "next dev",
   "build": "next build --no-lint",
   "start": "next start"
+}
 }
   "dependencies": {
     "@clerk/nextjs": "^5.0.0-beta.35",
