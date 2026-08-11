@@ -33,3 +33,5 @@
 👉 **Responsive Design**: Follows responsive design principles to ensure optimal user experience across devices, adapting seamlessly to different screen sizes and resolutions.
 
 and many more, including code architecture and reusability. 
+
+redeploy trigger
