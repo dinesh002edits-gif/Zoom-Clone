@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 'use client';
 import Image from 'next/image';
 import { useState } from 'react';
@@ -9,10 +8,11 @@ import MeetingModal from './MeetingModal';
 import { Call, useStreamVideoClient } from '@stream-io/video-react-sdk';
 import { useUser } from '@clerk/nextjs';
 import Loader from './Loader';
-import { Textarea } from './ui/textarea';
+import { Textarea } from '@/components/ui/textarea';
 import ReactDatePicker from 'react-datepicker';
-import { useToast } from './ui/use-toast';
-import { Input } from './ui/input';
+import 'react-datepicker/dist/react-datepicker.css';
+import { useToast } from "@/components/ui/use-toast";
+import { Input } from '@/components/ui/input';
 
 const initialValues = {
   dateTime: new Date(),
@@ -68,35 +68,34 @@ const MeetingTypeList = () => {
 
   return (
     <section className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-4">
-  <HomeCard
-  className="bg-orange-1"
-  icon={<Image src="/icons/add-meeting.svg" alt="add meeting" width={28} height={28} />}
-  title="New Meeting"
-  description="Start an instant meeting"
-  handleClick={() => setMeetingState('isInstantMeeting')}
-/>
-<HomeCard
-  className="bg-blue-1"
-  icon={<Image src="/icons/join-meeting.svg" alt="join meeting" width={28} height={28} />}
-  title="Join Meeting"
-  description="via invitation link"
-  handleClick={() => setMeetingState('isJoiningMeeting')}
-/>
-<HomeCard
-  className="bg-purple-1"
-  icon={<Image src="/icons/schedule.svg" alt="schedule meeting" width={28} height={28} />}
-  title="Schedule Meeting"
-  description="Plan your meeting"
-  handleClick={() => setMeetingState('isScheduleMeeting')}
-/>
-<HomeCard
-  className="bg-yellow-1"
-  icon={<Image src="/icons/recordings.svg" alt="view recordings" width={28} height={28} />}
-  title="View Recordings"
-  description="Meeting Recordings"
-  handleClick={() => router.push('/recordings')}
-/>
-    />
+      <HomeCard
+        className="bg-orange-1"
+        icon={<Image src="/icons/add-meeting.svg" alt="add meeting" width={28} height={28} />}
+        title="New Meeting"
+        description="Start an instant meeting"
+        handleClick={() => setMeetingState('isInstantMeeting')}
+      />
+      <HomeCard
+        className="bg-blue-1"
+        icon={<Image src="/icons/join-meeting.svg" alt="join meeting" width={28} height={28} />}
+        title="Join Meeting"
+        description="via invitation link"
+        handleClick={() => setMeetingState('isJoiningMeeting')}
+      />
+      <HomeCard
+        className="bg-purple-1"
+        icon={<Image src="/icons/schedule.svg" alt="schedule meeting" width={28} height={28} />}
+        title="Schedule Meeting"
+        description="Plan your meeting"
+        handleClick={() => setMeetingState('isScheduleMeeting')}
+      />
+      <HomeCard
+        className="bg-yellow-1"
+        icon={<Image src="/icons/recordings.svg" alt="view recordings" width={28} height={28} />}
+        title="View Recordings"
+        description="Meeting Recordings"
+        handleClick={() => router.push('/recordings')}
+      />
 
       <MeetingModal
         isOpen={meetingState === 'isInstantMeeting'}

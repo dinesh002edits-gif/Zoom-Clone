@@ -1,5 +1,5 @@
-import { ReactNode } from "react"; // CORRECT
 import type { Metadata } from "next";
+import { ReactNode } from "react"; // <-- THIS WAS MISSING
 import { ClerkProvider } from "@clerk/nextjs";
 import { Inter } from "next/font/google";
 

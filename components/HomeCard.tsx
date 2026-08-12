@@ -1,29 +1,27 @@
-"use client"
-import { cn } from "@/lib/utils";
+import Image from "next/image";
 import { ReactNode } from "react";
 
 interface HomeCardProps {
-  icon: ReactNode; // <- this is what was missing
+  icon: ReactNode;
   title: string;
   description: string;
-  className: string;
   handleClick: () => void;
+  className?: string; // <-- make this optional
 }
 
-const HomeCard = ({ icon, title, description, className, handleClick }: HomeCardProps) => {
+const HomeCard = ({ icon, title, description, handleClick, className }: HomeCardProps) => {
   return (
-    <div
+    <div 
+      className={`${className} px-4 py-6 rounded-[20px] cursor-pointer`}
       onClick={handleClick}
-      className={cn(
-        "px-6 py-8 rounded-2xl shadow-sm hover:shadow-md cursor-pointer transition-all duration-200 text-white",
-        className
-      )}
     >
-      <div className="bg-white/20 w-12 h-12 rounded-xl flex items-center justify-center mb-6">
+      <div className="flex flex-col gap-6">
         {icon}
+        <div className="flex flex-col gap-2">
+          <h1 className="text-2xl font-bold">{title}</h1>
+          <p className="text-lg font-normal">{description}</p>
+        </div>
       </div>
-      <h3 className="text-xl font-bold mb-2">{title}</h3>
-      <p className="text-white/80 text-sm">{description}</p>
     </div>
   );
 };

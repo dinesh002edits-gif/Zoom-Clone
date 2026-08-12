@@ -1,4 +1,4 @@
-import { ReactNode } from "react"; // NOT from "next"
+import { ReactNode } from 'react'
 import StreamVideoProvider from '@/providers/StreamClientProvider';
 import { Inter } from "next/font/google"; // add this for pro font
 
