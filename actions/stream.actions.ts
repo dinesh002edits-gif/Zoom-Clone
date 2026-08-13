@@ -1,7 +1,6 @@
 'use server';
 
 import { currentUser } from '@clerk/nextjs/server';
-import { StreamClient } from '@stream-io/node-sdk';
 
 export const tokenProvider = async () => {
   const user = await currentUser();
@@ -11,10 +10,11 @@ export const tokenProvider = async () => {
   const apiSecret = process.env.STREAM_SECRET_KEY;
   
   if (!apiKey || !apiSecret) {
-    throw new Error('Stream API keys missing');
+    throw new Error('Stream API keys missing during runtime');
   }
 
-  // Create client here, not at top level
+  // DYNAMIC IMPORT - only loads when function runs, not during build
+  const { StreamClient } = await import('@stream-io/node-sdk');
   const streamClient = new StreamClient(apiKey, apiSecret);
 
   const exp = Math.round(new Date().getTime() / 1000) + 60 * 60;
