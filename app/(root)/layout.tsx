@@ -1,15 +1,24 @@
 import { ReactNode } from 'react'
-import StreamVideoProvider from '@/providers/StreamClientProvider';
-import { Inter } from "next/font/google"; // add this for pro font
+import { ClerkProvider } from '@clerk/nextjs'
+import { Inter } from "next/font/google";
+import StreamVideoProvider from '@/providers/StreamClientProvider'
 
-const inter = Inter({ subsets: ["latin"] }); // add this
 
-const RootLayout = ({ children }: Readonly<{ children: ReactNode }>) => {
+const inter = Inter({ subsets: ["latin"] });
+
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <main className={`${inter.className} bg-gray-50 min-h-screen`}> {/* <- add bg-gray-50 here */}
-      <StreamVideoProvider>{children}</StreamVideoProvider>
-    </main>
-  );
-};
-
-export default RootLayout;
+    <ClerkProvider
+  afterSignInUrl="/"
+  afterSignUpUrl="/"
+    >
+      <html lang="en">
+        <body className={`${inter.className} bg-gray-50 min-h-screen`}>
+          <StreamVideoProvider>
+            {children}
+          </StreamVideoProvider>
+        </body>
+      </html>
+    </ClerkProvider>
+  )
+}
